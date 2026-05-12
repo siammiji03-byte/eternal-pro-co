@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Eternal Property Co — Airbnb systems & revenue optimisation</title>
+<meta name="description" content="We install the pricing, guest, and operations systems that run a multi-listing Airbnb portfolio without you. Add 15+% revenue and reclaim 10+ hours a week in 30 days." />
+
+<!-- Open Graph / social share -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Eternal Property Co — Airbnb systems & revenue optimisation" />
+<meta property="og:description" content="Add 15+% revenue and reclaim 10+ hours a week. In 30 days." />
+<meta property="og:image" content="/assets/images/og-image.jpg" />
+<meta property="og:url" content="https://eternalpropertyco.com" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+<link rel="apple-touch-icon" href="/assets/images/favicon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --bg-2:#111111;
+    --bg-3:#181818;
+    --line:#2a2a2a;
+    --line-2:#333333;
+    --text:#f5f5f5;
+    --muted:#b8b8b8;       /* lifted from #9a9a9a for readability */
+    --gold:#e8c98a;        /* brighter gold (was #c9a45c) */
+    --gold-2:#f3dba5;      /* highlight gold */
+    --gold-dim:#a88945;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;scroll-behavior:smooth}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font-family:inherit}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+  /* ===== NAV ===== */
+  nav.top{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(10,10,10,0.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1300px;margin:0 auto;gap:16px}
+  .logo-mark{display:flex;align-items:center;cursor:pointer;height:60px}
+  .logo-img{height:60px;flex-shrink:0;display:flex;align-items:center}
+  .logo-img img{height:100%;width:auto;display:block;object-fit:contain}
+  .nav-links{display:flex;gap:28px;font-size:13px;color:var(--muted);font-weight:500}
+  .nav-links a:hover{color:var(--gold)}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .social-icon{width:36px;height:36px;border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all 0.2s;border-radius:50%}
+  .social-icon:hover{border-color:var(--gold);color:var(--gold)}
+  .social-icon svg{width:14px;height:14px}
+  .nav-cta{padding:9px 16px;border:1px solid var(--gold);color:var(--gold);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s;cursor:pointer;background:transparent;font-weight:600}
+  .nav-cta:hover{background:var(--gold);color:var(--bg)}
+  @media(max-width:900px){.nav-links{display:none}}
+  @media(max-width:480px){
+    .logo-mark{height:46px}
+    .logo-img{height:46px}
+    .nav-cta{padding:8px 12px;font-size:11px}
+    .nav-right{gap:8px}
+    .social-icon{width:34px;height:34px}
+  }
+
+  /* ===== HERO ===== */
+  .hero{padding:140px 0 80px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(232,201,138,0.08),transparent 70%);pointer-events:none}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;position:relative}
+  .cta-row.hero-ctas-mobile{display:none}
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:32px}
+    .cta-row.hero-ctas-desktop{display:none}
+    .cta-row.hero-ctas-mobile{display:flex;justify-content:center}
+    .hero-ctas-mobile .btn-primary,.hero-ctas-mobile .btn-secondary{flex:1;text-align:center;min-width:0}
+  }
+  .eyebrow{display:inline-block;font-size:11px;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:24px;padding:6px 12px;border:1px solid var(--gold-dim);border-radius:2px;font-weight:700}
+  h1.hero-title{font-family:'Playfair Display',serif;font-size:clamp(36px,4.8vw,60px);line-height:1.05;font-weight:600;letter-spacing:-0.02em;margin-bottom:24px}
+  h1.hero-title em{color:var(--gold);font-style:normal;font-weight:700}
+  .hero-sub{font-size:17px;color:var(--muted);margin-bottom:32px;max-width:540px;line-height:1.6}
+  .hero-stats{display:flex;gap:28px;margin-bottom:36px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .stat .num{font-family:'Playfair Display',serif;font-size:26px;color:var(--gold);font-weight:700;line-height:1}
+  .stat .label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-top:6px;font-weight:500}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn-primary{padding:15px 26px;background:var(--gold);color:var(--bg);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s;border:none;cursor:pointer;text-decoration:none;display:inline-block}
+  .btn-primary:hover{background:var(--gold-2);transform:translateY(-1px)}
+  .btn-secondary{padding:15px 26px;border:1px solid var(--line-2);color:var(--text);font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s;cursor:pointer;background:transparent;text-decoration:none;display:inline-block}
+  .btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+
+  /* VSL — 16:9 horizontal to match source */
+  .video-frame{aspect-ratio:16/9;background:#000;border:1px solid var(--line-2);position:relative;overflow:hidden;width:100%;border-radius:6px;box-shadow:0 30px 60px rgba(0,0,0,0.4)}
+  .video-frame video,.video-frame iframe{width:100%;height:100%;display:block;background:#000;border:0}
+  .video-frame video{object-fit:contain}
+  @media(max-width:900px){.video-frame{max-width:560px;margin:0 auto}}
+
+  /* ===== LOGO STRIP ===== */
+  .strip{padding:36px 0;border-bottom:1px solid var(--line);background:var(--bg-2);overflow:hidden}
+  .strip-label{text-align:center;font-size:11px;letter-spacing:0.22em;color:var(--muted);text-transform:uppercase;margin-bottom:28px;font-weight:600}
+  .strip-track{display:flex;gap:80px;animation:scroll 32s linear infinite;width:max-content;align-items:center}
+  .strip-item{display:flex;align-items:center;gap:14px;color:var(--text);flex-shrink:0;opacity:0.85;transition:opacity 0.2s}
+  .strip-item:hover{opacity:1}
+  .strip-item .brand-airbnb{color:#FF5A5F;font-family:'Inter',sans-serif;font-weight:700;font-size:26px;letter-spacing:-0.02em;display:flex;align-items:center;gap:8px}
+  .strip-item .brand-booking{color:#003580;background:#fff;padding:6px 14px;border-radius:3px;font-family:'Inter',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em}
+  .strip-item .brand-vrbo{color:#245ABC;background:#fff;padding:8px 16px;border-radius:3px;font-family:'Inter',sans-serif;font-weight:800;font-size:22px;letter-spacing:-0.02em}
+  .strip-item svg{flex-shrink:0}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ===== SECTIONS ===== */
+  section{padding:90px 0;border-bottom:1px solid var(--line);position:relative}
+  @media(max-width:768px){section{padding:64px 0}}
+  .section-eyebrow{font-size:11px;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;text-align:center;font-weight:700}
+  h2.section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,3.8vw,44px);font-weight:600;line-height:1.1;letter-spacing:-0.02em;text-align:center;margin-bottom:14px}
+  .section-sub{text-align:center;color:var(--muted);max-width:600px;margin:0 auto 56px;font-size:16px;line-height:1.65}
+
+  /* ===== ABOUT ===== */
+  .about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:center;max-width:1000px;margin:0 auto}
+  @media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:32px}}
+  .about-img{aspect-ratio:4/5;border:1px solid var(--gold-dim);position:relative;overflow:hidden;border-radius:4px;box-shadow:0 20px 50px rgba(0,0,0,0.4)}
+  .about-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .about-content h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3.8vw,40px);line-height:1.1;margin-bottom:20px;letter-spacing:-0.02em}
+  .about-content p{color:var(--muted);margin-bottom:16px;line-height:1.7;font-size:15px}
+  .about-content p strong{color:var(--text);font-weight:600}
+
+  /* ===== PROBLEMS ===== */
+  .problems{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  @media(max-width:700px){.problems{grid-template-columns:1fr}}
+  .problem-card{padding:32px;background:var(--bg-2);transition:background 0.2s}
+  .problem-card:hover{background:var(--bg-3)}
+  .problem-num{font-family:'Inter',sans-serif;font-size:11px;color:var(--gold);letter-spacing:0.18em;margin-bottom:14px;font-weight:700;text-transform:uppercase}
+  .problem-card h3{font-size:17px;font-weight:600;margin-bottom:10px;letter-spacing:-0.01em}
+  .problem-card p{color:var(--muted);font-size:14px;line-height:1.65}
+  .problem-tag{text-align:center;margin-top:36px;color:var(--gold-2);font-size:16px;font-family:'Inter',sans-serif;font-weight:500;letter-spacing:-0.005em}
+
+  /* ===== CALCULATOR ===== */
+  .calc-section{background:linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%)}
+  .calc{max-width:680px;margin:0 auto;background:var(--bg-3);border:1px solid var(--line-2);padding:44px;border-radius:6px;box-shadow:0 20px 50px rgba(0,0,0,0.3)}
+  @media(max-width:600px){.calc{padding:28px 22px}}
+  .calc-header{text-align:center;margin-bottom:32px}
+  .calc-header h3{font-family:'Playfair Display',serif;font-size:26px;margin-bottom:8px;letter-spacing:-0.01em}
+  .calc-header p{color:var(--muted);font-size:14px}
+  .calc-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+  @media(max-width:500px){.calc-row{grid-template-columns:1fr}}
+  .calc-field label{display:block;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:600}
+  .calc-field input,.calc-field select{width:100%;padding:13px 15px;background:var(--bg);border:1px solid var(--line-2);color:var(--text);font-size:15px;font-family:inherit;transition:border 0.2s;border-radius:2px}
+  .calc-field input:focus,.calc-field select:focus{outline:none;border-color:var(--gold)}
+  .calc-result{margin-top:28px;padding:22px;background:var(--bg);border:1px solid var(--gold-dim);text-align:center;border-radius:2px}
+  .calc-result .leak-label{font-size:11px;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;font-weight:700}
+  .calc-result .leak-num{font-family:'Playfair Display',serif;font-size:44px;color:var(--gold);font-weight:700;line-height:1}
+  .calc-result .leak-period{font-size:13px;color:var(--muted);margin-top:8px}
+  .calc-cta{margin-top:22px;width:100%;text-align:center}
+
+  /* ===== SYSTEMS ===== */
+  .systems{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  @media(max-width:700px){.systems{grid-template-columns:1fr}}
+  .system{padding:30px;background:var(--bg-2);border:1px solid var(--line);transition:all 0.2s;border-radius:4px}
+  .system:hover{border-color:var(--gold-dim);transform:translateY(-2px)}
+  .system-num{font-family:'Playfair Display',serif;font-size:13px;color:var(--gold);letter-spacing:0.15em;margin-bottom:14px;font-weight:700}
+  .system h3{font-size:19px;font-weight:600;margin-bottom:8px;font-family:'Playfair Display',serif;letter-spacing:-0.01em}
+  .system .outcome{color:var(--text);font-size:14px;margin-bottom:10px;font-weight:500;line-height:1.5}
+  .system .detail{color:var(--muted);font-size:13px;line-height:1.65}
+
+  /* Dashboard mockups (4 screens) */
+  .screens{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px;align-items:stretch}
+  @media(max-width:900px){.screens{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:500px){.screens{grid-template-columns:1fr}}
+  .screen{background:var(--bg-2);border:1px solid var(--line);padding:14px;display:flex;flex-direction:column;font-size:11px;border-radius:6px;min-height:240px}
+  .screen-header{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:10px;letter-spacing:0.05em}
+  .screen-header .dot{width:6px;height:6px;border-radius:50%;background:var(--line-2)}
+  .screen-header .dot.live{background:var(--gold);box-shadow:0 0 6px rgba(232,201,138,0.6)}
+  .screen-title{font-size:12px;color:var(--text);font-weight:500;margin:8px 0 8px}
+  .screen-body{flex:1;display:flex;flex-direction:column;justify-content:flex-end}
+  .screen-bars{display:flex;align-items:flex-end;gap:4px;height:120px}
+  .screen-bars .bar{flex:1;background:linear-gradient(180deg,var(--gold) 0%,var(--gold-dim) 100%);opacity:0.85;border-radius:1px 1px 0 0}
+  .screen-cal{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;height:120px}
+  .screen-cal .cell{background:var(--bg-3);border-radius:1px}
+  .screen-cal .cell.booked{background:var(--gold-dim)}
+  .screen-cal .cell.live{background:var(--gold)}
+  .screen-list{display:flex;flex-direction:column;gap:4px;font-size:10px}
+  .screen-list .row{padding:5px 7px;background:var(--bg-3);color:var(--muted);display:flex;justify-content:space-between;border-radius:2px}
+  .screen-list .row .check{color:var(--gold);font-weight:700}
+
+  /* Guest flow visual — replaces the small messaging mockup */
+  .screen.flow-screen{padding:10px;min-height:340px}
+  .flow-header{display:flex;align-items:center;gap:8px;padding:4px 4px 10px;border-bottom:1px solid var(--line);margin-bottom:10px}
+  .flow-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dim),var(--gold));display:flex;align-items:center;justify-content:center;color:var(--bg);font-weight:700;font-size:11px;flex-shrink:0}
+  .flow-name{font-size:12px;font-weight:600;line-height:1.1}
+  .flow-status{font-size:9px;color:var(--gold);display:flex;align-items:center;gap:4px;margin-top:2px;letter-spacing:0.04em}
+  .flow-status::before{content:"";width:5px;height:5px;background:var(--gold);border-radius:50%;display:inline-block;box-shadow:0 0 4px var(--gold)}
+  .flow-msgs{display:flex;flex-direction:column;gap:5px;overflow:hidden;flex:1}
+  .flow-bubble{padding:6px 9px;border-radius:10px;font-size:10px;line-height:1.35;max-width:88%}
+  .flow-bubble.in{background:var(--bg-3);color:var(--muted);align-self:flex-start;border-bottom-left-radius:3px}
+  .flow-bubble.out{background:var(--gold);color:var(--bg);align-self:flex-end;border-bottom-right-radius:3px;font-weight:500}
+  .flow-tag{display:inline-block;font-size:8px;color:var(--gold);background:rgba(232,201,138,0.12);padding:1px 5px;border-radius:2px;margin-bottom:3px;letter-spacing:0.06em;text-transform:uppercase;font-weight:700;align-self:flex-end}
+
+
+  .flow-header{display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:14px}
+  .flow-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dim),var(--gold));display:flex;align-items:center;justify-content:center;color:var(--bg);font-weight:700;font-size:14px}
+  .flow-name{font-size:14px;font-weight:600}
+  .flow-status{font-size:11px;color:var(--gold);display:flex;align-items:center;gap:5px;margin-top:1px}
+  .flow-status::before{content:"";width:6px;height:6px;background:var(--gold);border-radius:50%;display:inline-block;box-shadow:0 0 6px var(--gold)}
+  .flow-msgs{display:flex;flex-direction:column;gap:8px;max-height:340px;overflow-y:auto}
+  .flow-bubble{padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.4;max-width:85%}
+  .flow-bubble.in{background:var(--bg-3);color:var(--muted);align-self:flex-start;border-bottom-left-radius:4px}
+  .flow-bubble.out{background:var(--gold);color:var(--bg);align-self:flex-end;border-bottom-right-radius:4px;font-weight:500}
+  .flow-time{font-size:10px;color:var(--muted);text-align:center;margin:4px 0;letter-spacing:0.05em;text-transform:uppercase;opacity:0.7}
+  .flow-tag{display:inline-block;font-size:10px;color:var(--gold);background:rgba(232,201,138,0.1);padding:2px 7px;border-radius:3px;margin-bottom:5px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600}
+
+  /* ===== PROCESS ===== */
+  .process{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+  @media(max-width:900px){.process{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:500px){.process{grid-template-columns:1fr}}
+  .step{text-align:center;padding:24px 14px}
+  .step-num{font-family:'Playfair Display',serif;font-size:42px;color:var(--gold);font-weight:700;margin-bottom:10px;opacity:0.7;line-height:1}
+  .step h3{font-size:15px;font-weight:600;margin-bottom:8px}
+  .step p{font-size:12px;color:var(--muted);line-height:1.55}
+
+  /* ===== TESTIMONIALS ===== */
+  .tests{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:900px){.tests{grid-template-columns:1fr}}
+  .test{padding:30px;background:var(--bg-2);border:1px solid var(--line);border-radius:4px;display:flex;flex-direction:column}
+  .test-stars{color:var(--gold);letter-spacing:2px;margin-bottom:14px;font-size:13px}
+  .test blockquote{font-size:15px;line-height:1.65;margin-bottom:auto;color:var(--text);padding-bottom:20px}
+  .test-author{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--line)}
+  .test-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dim),var(--gold));display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--bg);font-size:14px;flex-shrink:0}
+  .test-name{font-weight:600;font-size:14px}
+  .test-meta{font-size:12px;color:var(--muted);margin-top:2px}
+
+  /* ===== GUARANTEE ===== */
+  .guarantee{background:linear-gradient(135deg,#1a1308 0%,#0a0a0a 100%);border:1px solid var(--gold-dim);padding:56px 40px;text-align:center;max-width:880px;margin:0 auto;position:relative;border-radius:6px}
+  @media(max-width:600px){.guarantee{padding:48px 24px}}
+  .guarantee-seal{position:absolute;top:-18px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--bg);padding:7px 20px;font-size:10px;letter-spacing:0.18em;font-weight:700;text-transform:uppercase;white-space:nowrap;border-radius:2px}
+  .guarantee h3{font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,32px);margin-bottom:14px;line-height:1.2;letter-spacing:-0.01em}
+  .guarantee p{color:var(--muted);max-width:540px;margin:0 auto;font-size:15px;line-height:1.6}
+
+  /* ===== FAQ ===== */
+  .faq{max-width:780px;margin:0 auto}
+  .faq-item{border-bottom:1px solid var(--line);padding:22px 0;cursor:pointer}
+  .faq-q{display:flex;justify-content:space-between;align-items:center;font-size:16px;font-weight:500;gap:16px}
+  .faq-toggle{color:var(--gold);font-size:22px;transition:transform 0.2s;flex-shrink:0;font-weight:300;line-height:1}
+  .faq-item.open .faq-toggle{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s ease;color:var(--muted);font-size:14px;line-height:1.7}
+  .faq-item.open .faq-a{max-height:400px;padding-top:14px}
+
+  /* ===== FINAL ===== */
+  .final{text-align:center;padding:100px 0}
+  .final h2{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,48px);margin-bottom:18px;line-height:1.1;letter-spacing:-0.02em}
+  .final p{color:var(--muted);font-size:16px;margin-bottom:32px;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.65}
+
+  /* ===== FOOTER ===== */
+  footer{padding:40px 0 32px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+  .foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;align-items:center}
+  .foot-links{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .foot-links a{display:flex;align-items:center;gap:6px;transition:color 0.2s}
+  .foot-links a:hover{color:var(--gold)}
+  .foot-links svg{width:14px;height:14px}
+
+  /* fade-in on load */
+  .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease}
+  .fade-in.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="nav-inner">
+    <a href="#top" class="logo-mark">
+      <div class="logo-img"><img src="/assets/images/logo-black.png" alt="Eternal Property Co" /></div>
+    </a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#problems">Problems</a>
+      <a href="#systems">Systems</a>
+      <a href="#process">Process</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-right">
+      <a href="mailto:siam@eternalpropertyco.com" class="social-icon" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+      <a href="https://www.instagram.com/eternalproperty_co" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://tally.so/r/rjox22" target="_blank" rel="noopener" class="nav-cta">Free audit</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <div class="eyebrow">For STR hosts with multiple listings</div>
+      <h1 class="hero-title">Add <em>15+%</em> revenue and reclaim <em>10+ hours</em> a week — in <em>30 days</em>.</h1>
+      <p class="hero-sub">We install the pricing, guest, and operations systems to run a multi-listing portfolio without you. Or we keep working until they do.</p>
+      <div class="hero-stats">
+        <div class="stat"><div class="num">15+%</div><div class="label">Revenue lift</div></div>
+        <div class="stat"><div class="num">10+ hrs</div><div class="label">Saved per week</div></div>
+        <div class="stat"><div class="num">30 days</div><div class="label">To results</div></div>
+      </div>
+      <div class="cta-row hero-ctas-desktop">
+        <a href="https://tally.so/r/rjox22" target="_blank" rel="noopener" class="btn-primary">Request a free audit</a>
+        <a href="#calc" class="btn-secondary">Find my revenue leak</a>
+      </div>
+    </div>
+    <div class="video-frame">
+      <video controls preload="metadata" poster="/assets/images/poster.jpg" playsinline>
+        <source src="/assets/video/vsl.mp4" type="video/mp4">
+        Your browser does not support video playback.
+      </video>
+    </div>
+    <div class="cta-row hero-ctas-mobile">
+      <a href="https://tally.so/r/rjox22" target="_blank" rel="noopener" class="btn-primary">Request a free audit</a>
+      <a href="#calc" class="btn-secondary">Find my revenue leak</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO STRIP — Airbnb · Booking.com · Vrbo, alternating -->
+<div class="strip">
+  <div class="strip-label">Built for hosts on the platforms you already use</div>
+  <div class="strip-track">
+    <div class="strip-item">
+      <span class="brand-airbnb">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="#FF5A5F"><path d="M16 2C8.8 2 3 7.8 3 15c0 1.5.3 2.9.8 4.2L14.5 29c.4.4 1 .6 1.5.6s1.1-.2 1.5-.6l10.7-9.8c.5-1.3.8-2.7.8-4.2 0-7.2-5.8-13-13-13zm0 18.5c-3 0-5.5-2.5-5.5-5.5s2.5-5.5 5.5-5.5 5.5 2.5 5.5 5.5-2.5 5.5-5.5 5.5z"/></svg>
+        airbnb
+      </span>
+    </div>
+    <div class="strip-item">
+      <span class="brand-booking">Booking.com</span>
+    </div>
+    <div class="strip-item">
+      <span class="brand-vrbo">Vrbo</span>
+    </div>
+    <div class="strip-item">
+      <span class="brand-airbnb">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="#FF5A5F"><path d="M16 2C8.8 2 3 7.8 3 15c0 1.5.3 2.9.8 4.2L14.5 29c.4.4 1 .6 1.5.6s1.1-.2 1.5-.6l10.7-9.8c.5-1.3.8-2.7.8-4.2 0-7.2-5.8-13-13-13zm0 18.5c-3 0-5.5-2.5-5.5-5.5s2.5-5.5 5.5-5.5 5.5 2.5 5.5 5.5-2.5 5.5-5.5 5.5z"/></svg>
+        airbnb
+      </span>
+    </div>
+    <div class="strip-item">
+      <span class="brand-booking">Booking.com</span>
+    </div>
+    <div class="strip-item">
+      <span class="brand-vrbo">Vrbo</span>
+    </div>
+    <!-- duplicate for seamless loop -->
+    <div class="strip-item">
+      <span class="brand-airbnb">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="#FF5A5F"><path d="M16 2C8.8 2 3 7.8 3 15c0 1.5.3 2.9.8 4.2L14.5 29c.4.4 1 .6 1.5.6s1.1-.2 1.5-.6l10.7-9.8c.5-1.3.8-2.7.8-4.2 0-7.2-5.8-13-13-13zm0 18.5c-3 0-5.5-2.5-5.5-5.5s2.5-5.5 5.5-5.5 5.5 2.5 5.5 5.5-2.5 5.5-5.5 5.5z"/></svg>
+        airbnb
+      </span>
+    </div>
+    <div class="strip-item">
+      <span class="brand-booking">Booking.com</span>
+    </div>
+    <div class="strip-item">
+      <span class="brand-vrbo">Vrbo</span>
+    </div>
+    <div class="strip-item">
+      <span class="brand-airbnb">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="#FF5A5F"><path d="M16 2C8.8 2 3 7.8 3 15c0 1.5.3 2.9.8 4.2L14.5 29c.4.4 1 .6 1.5.6s1.1-.2 1.5-.6l10.7-9.8c.5-1.3.8-2.7.8-4.2 0-7.2-5.8-13-13-13zm0 18.5c-3 0-5.5-2.5-5.5-5.5s2.5-5.5 5.5-5.5 5.5 2.5 5.5 5.5-2.5 5.5-5.5 5.5z"/></svg>
+        airbnb
+      </span>
+    </div>
+    <div class="strip-item">
+      <span class="brand-booking">Booking.com</span>
+    </div>
+    <div class="strip-item">
+      <span class="brand-vrbo">Vrbo</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-img">
+        <img src="/assets/images/about.jpg" alt="Eternal Property Co — operator-led portfolio management" loading="lazy" />
+      </div>
+      <div class="about-content">
+        <div class="section-eyebrow" style="text-align:left;margin-bottom:14px">About</div>
+        <h2>Built by an operator.<br>Not an agency.</h2>
+        <p>I run a portfolio of <strong>10+ short-term rentals</strong> at <strong>90–95% occupancy</strong>. Eternal Property Co exists because the systems that took my own portfolio to six figures in revenue can be installed and run for other hosts inside 30 days.</p>
+        <p>This is not traditional management. We don't take over your brand or your guest relationships. We install the pricing, messaging, and operations systems — then run them for you, so you stop working in your business.</p>
+        <p>If you have <strong>5+ listings</strong> and you're still answering guest messages at 11pm or chasing cleaners on WhatsApp, you don't have a hosting problem. You have a systems problem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMS -->
+<section id="problems">
+  <div class="wrap">
+    <div class="section-eyebrow">The 5 leaks</div>
+    <h2 class="section-title">Why most Airbnb hosts leave money on the table</h2>
+    <p class="section-sub">If two or more of these sound familiar, you have a systems problem — not a hosting problem.</p>
+    <div class="problems">
+      <div class="problem-card"><div class="problem-num">01 — PRICING</div><h3>Your pricing isn't adapting to demand</h3><p>Static or seasonally-set rates miss the daily shifts in demand, weekends, events, and shoulder seasons. The result is consistent revenue loss every month.</p></div>
+      <div class="problem-card"><div class="problem-num">02 — MESSAGING</div><h3>Guest communication is largely manual</h3><p>You answer the same questions every week. Slow replies push your response score down and your conversion rate with it.</p></div>
+      <div class="problem-card"><div class="problem-num">03 — OPERATIONS</div><h3>Cleaning runs on follow-ups, not systems</h3><p>Turnovers depend on WhatsApp chasing instead of structure. One missed clean is one bad review that costs you a month of bookings.</p></div>
+      <div class="problem-card"><div class="problem-num">04 — REVIEWS</div><h3>Inconsistent post-booking communication</h3><p>Reviews come when they come. Without a structured post-stay flow, you average 4.7 instead of 4.9 — and lose Superhost lift.</p></div>
+      <div class="problem-card" style="grid-column:1/-1"><div class="problem-num">05 — DEPENDENCY</div><h3>Heavy reliance on Airbnb</h3><p>Rising fees, limited control, and zero ownership of your repeat guests. Without a direct booking channel, you're permanently exposed to platform changes.</p></div>
+    </div>
+    <p class="problem-tag">Running an Airbnb shouldn't feel like a 24/7 job.</p>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section id="calc" class="calc-section">
+  <div class="wrap">
+    <div class="section-eyebrow">Free tool</div>
+    <h2 class="section-title">Revenue leak calculator</h2>
+    <p class="section-sub">See how much your current setup is costing you each year.</p>
+    <div class="calc">
+      <div class="calc-header">
+        <h3>Find your annual leak</h3>
+        <p>Estimates use industry benchmarks for dynamic pricing and operational fixes.</p>
+      </div>
+      <div class="calc-row">
+        <div class="calc-field"><label>Number of listings</label><input type="number" id="listings" value="0" min="0" placeholder="0" /></div>
+        <div class="calc-field"><label>Avg nightly rate (£)</label><input type="number" id="rate" value="0" min="0" placeholder="0" /></div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-field"><label>Avg occupancy (%)</label><input type="number" id="occ" value="0" min="0" max="100" placeholder="0" /></div>
+        <div class="calc-field"><label>Using dynamic pricing?</label><select id="dyn"><option value="no">No</option><option value="basic">Basic / Airbnb smart pricing</option><option value="full">Yes — daily optimised</option></select></div>
+      </div>
+
+      <!-- Stage 1: email gate (visible initially) -->
+      <div id="calc-gate">
+        <div class="calc-row" style="grid-template-columns:1fr;margin-top:8px">
+          <div class="calc-field">
+            <label>Your email — to receive the full breakdown</label>
+            <input type="email" id="calc-email" placeholder="you@yourdomain.com" />
+          </div>
+        </div>
+        <div class="calc-cta">
+          <button type="button" class="btn-primary" id="calc-reveal" style="width:100%;border:none;cursor:pointer">Reveal my revenue leak</button>
+        </div>
+        <p id="calc-error" style="display:none;color:#e57373;font-size:12px;text-align:center;margin-top:10px"></p>
+        <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:14px;opacity:0.7">We never share your email. One-time delivery of your audit results.</p>
+      </div>
+
+      <!-- Stage 2: result (hidden until email submitted) -->
+      <div id="calc-output" style="display:none">
+        <div class="calc-result">
+          <div class="leak-label">Estimated annual revenue leak</div>
+          <div class="leak-num" id="leak">£0</div>
+          <div class="leak-period">Across your <span id="lc">0</span> listings, every year</div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);text-align:center;margin:18px 0 0;line-height:1.6">
+          We've sent the full breakdown to <strong id="calc-email-confirm" style="color:var(--text)"></strong>.<br>
+          Want the full audit with specific fixes? Book a free 30-minute call.
+        </p>
+        <div class="calc-cta">
+          <a href="https://tally.so/r/rjox22" target="_blank" rel="noopener" class="btn-primary" style="width:100%;text-align:center">Book my free audit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SYSTEMS -->
+<section id="systems">
+  <div class="wrap">
+    <div class="section-eyebrow">What we install</div>
+    <h2 class="section-title">Five systems. One operator-free portfolio.</h2>
+    <p class="section-sub">Complete systems that work together to increase your occupancy and free up your time. Built around what we run on our own portfolio.</p>
+    <div class="systems">
+      <div class="system"><div class="system-num">01</div><h3>Dynamic Pricing Optimisation</h3><p class="outcome">Stop losing revenue to flat or stale pricing.</p><p class="detail">Smart pricing that adjusts in real time based on demand, seasonality, and local events. Reviewed weekly during onboarding, then monthly to keep occupancy and rate moving in your favour.</p></div>
+      <div class="system"><div class="system-num">02</div><h3>Guest Messaging Automation</h3><p class="outcome">95%+ response rate. Zero repetitive replies.</p><p class="detail">Automated responses to common questions, structured check-in instructions, and follow-ups. Three-touch messaging at booking, pre-arrival, and post-checkout — so you stop being the bottleneck.</p></div>
+      <div class="system"><div class="system-num">03</div><h3>Operations &amp; Cleaner System</h3><p class="outcome">Turnovers run without you sending a single message.</p><p class="detail">Streamlined coordination with cleaners and maintenance through automated scheduling and task management. Tick-box checklists confirm completion. Built and tested on our own portfolio first.</p></div>
+      <div class="system"><div class="system-num">04</div><h3>Direct Booking Starter Funnel</h3><p class="outcome">Cut platform fees on repeat guests.</p><p class="detail">Build your own booking channel to reduce Airbnb fees and own your guest relationships. A simple direct booking page for repeat guests — not a replacement for Airbnb.</p></div>
+      <div class="system" style="grid-column:1/-1"><div class="system-num">05</div><h3>Monthly Optimisation &amp; Reporting</h3><p class="outcome">One report a month. Clear numbers. Continuous gains.</p><p class="detail">Regular performance reviews and optimisations with clear reports showing occupancy, ADR, RevPAR, review score, and the next month's actions. No vague summaries.</p></div>
+    </div>
+
+    <!-- 4 dashboard mockups: pricing, calendar, guest flow (realistic), cleaner SOP -->
+    <div class="screens">
+
+      <!-- 1. Pricing dashboard -->
+      <div class="screen">
+        <div class="screen-header"><span class="dot live"></span><span>Pricing · Live</span></div>
+        <div class="screen-title">Daily rate · 7-day view</div>
+        <div class="screen-body">
+          <div class="screen-bars">
+            <div class="bar" style="height:40%"></div>
+            <div class="bar" style="height:55%"></div>
+            <div class="bar" style="height:48%"></div>
+            <div class="bar" style="height:70%"></div>
+            <div class="bar" style="height:88%"></div>
+            <div class="bar" style="height:95%"></div>
+            <div class="bar" style="height:62%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Calendar / occupancy -->
+      <div class="screen">
+        <div class="screen-header"><span class="dot live"></span><span>Calendar · 30 days</span></div>
+        <div class="screen-title">Occupancy · 92% booked</div>
+        <div class="screen-body">
+          <div class="screen-cal">
+            <div class="cell booked"></div><div class="cell booked"></div><div class="cell booked"></div><div class="cell live"></div><div class="cell booked"></div><div class="cell booked"></div><div class="cell"></div>
+            <div class="cell booked"></div><div class="cell booked"></div><div class="cell booked"></div><div class="cell booked"></div><div class="cell booked"></div><div class="cell booked"></div><div class="cell booked"></div>
+            <div class="cell booked"></div><div class="cell booked"></div><div class="cell"></div><div class="cell booked"></div><div class="cell booked"></div><div class="cell booked"></div><div class="cell booked"></div>
+            <div class="cell booked"></div><div class="cell booked"></div><div class="cell booked"></div><div class="cell booked"></div><div class="cell booked"></div><div class="cell booked"></div><div class="cell booked"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Realistic guest flow -->
+      <div class="screen flow-screen">
+        <div class="flow-header">
+          <div class="flow-avatar">SM</div>
+          <div>
+            <div class="flow-name">Sarah Mitchell</div>
+            <div class="flow-status">Pre-arrival · automated</div>
+          </div>
+        </div>
+        <div class="flow-msgs">
+          <div class="flow-bubble out">Hi Sarah! Check-in is from 3pm tomorrow. Door code &amp; Wi-Fi sent 1h before arrival.</div>
+          <div class="flow-bubble in">Thanks! Arriving around 4. Parking nearby?</div>
+          <span class="flow-tag">Auto · FAQ matched</span>
+          <div class="flow-bubble out">Free parking on Marlow Rd outside. Paid car park 3 min walk (£8/day).</div>
+          <div class="flow-bubble out">Door code: 4471. Wi-Fi card by the kettle. Have a great stay!</div>
+          <div class="flow-bubble in">Just arrived, all good 🙏</div>
+        </div>
+      </div>
+
+      <!-- 4. Cleaner SOP -->
+      <div class="screen">
+        <div class="screen-header"><span class="dot live"></span><span>Cleaner SOP</span></div>
+        <div class="screen-title">Turnover · 14:30 today</div>
+        <div class="screen-body">
+          <div class="screen-list">
+            <div class="row"><span>Bedroom 1</span><span class="check">✓</span></div>
+            <div class="row"><span>Bedroom 2</span><span class="check">✓</span></div>
+            <div class="row"><span>Bathroom</span><span class="check">✓</span></div>
+            <div class="row"><span>Kitchen restock</span><span class="check">✓</span></div>
+            <div class="row"><span>Linen change</span><span class="check">✓</span></div>
+            <div class="row"><span>Photo confirm</span><span>—</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:48px">
+      <a href="https://tally.so/r/rjox22" target="_blank" rel="noopener" class="btn-primary">Request a free audit</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <div class="section-eyebrow">How it works</div>
+    <h2 class="section-title">Five steps. Thirty days.</h2>
+    <p class="section-sub">No long onboarding. No vague timelines. You see results inside the first month or we don't stop working.</p>
+    <div class="process">
+      <div class="step"><div class="step-num">01</div><h3>Free Consultation</h3><p>We analyse your listings, pricing, and operations to identify quick wins and growth opportunities.</p></div>
+      <div class="step"><div class="step-num">02</div><h3>Setup Plan</h3><p>You get a custom roadmap showing exactly what we'll implement and the expected impact on occupancy.</p></div>
+      <div class="step"><div class="step-num">03</div><h3>Implementation</h3><p>We set up all systems, integrations, and automation while you stay in the loop with weekly updates.</p></div>
+      <div class="step"><div class="step-num">04</div><h3>Testing &amp; launch</h3><p>We test everything thoroughly before going live. From day one, the systems run without you in the loop.</p></div>
+      <div class="step"><div class="step-num">05</div><h3>Optimisation</h3><p>We monitor performance and make ongoing improvements to keep increasing revenue and reducing your workload.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="results">
+  <div class="wrap">
+    <div class="section-eyebrow">From our clients</div>
+    <h2 class="section-title" style="margin-bottom:56px">What hosts say after 30 days</h2>
+    <div class="tests">
+      <div class="test">
+        <div class="test-stars">★★★★★</div>
+        <blockquote>"The systems removed a huge amount of daily work. Pricing felt sharper within two weeks and our occupancy moved up noticeably across the portfolio. The biggest relief was the cleaner workflow — no more late-night WhatsApps."</blockquote>
+        <div class="test-author"><div class="test-avatar">JM</div><div><div class="test-name">James M.</div><div class="test-meta">6 listings · Manchester</div></div></div>
+      </div>
+      <div class="test">
+        <div class="test-stars">★★★★★</div>
+        <blockquote>"What stood out was the structure. Everything from pricing to cleaners runs without me chasing anyone. I run my portfolio while working full-time and I haven't manually replied to a guest in over a month. Reviews lifted to 4.91 average."</blockquote>
+        <div class="test-author"><div class="test-avatar">AK</div><div><div class="test-name">Aisha K.</div><div class="test-meta">9 listings · Edinburgh</div></div></div>
+      </div>
+      <div class="test">
+        <div class="test-stars">★★★★★</div>
+        <blockquote>"We didn't realise how much revenue we were leaving on the table until the audit. The changes were simple but effective and the setup paid for itself inside six weeks. The monthly report is the most useful thing we get from any service."</blockquote>
+        <div class="test-author"><div class="test-avatar">RP</div><div><div class="test-name">Ravi P.</div><div class="test-meta">14 listings · Birmingham</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section>
+  <div class="wrap">
+    <div class="guarantee">
+      <div class="guarantee-seal">30-day guarantee</div>
+      <h3>If you don't see improvements in occupancy, pricing, or guest experience within 30 days — we keep working until you do.</h3>
+      <p>No occupancy lift. No hours saved. No clearer reporting. We continue at no extra cost. That's the deal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-eyebrow">Common questions</div>
+    <h2 class="section-title">Frequently asked questions</h2>
+    <p class="section-sub" style="margin-bottom:40px">If your question isn't here, email siam@eternalpropertyco.com.</p>
+    <div class="faq">
+      <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><span>What does the free Airbnb audit include?</span><span class="faq-toggle">+</span></div><div class="faq-a">A personalised review of your listings, pricing strategy, guest communication, and operations, with clear recommendations to improve performance. No pitch unless you ask for one.</div></div>
+      <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><span>How do I get started?</span><span class="faq-toggle">+</span></div><div class="faq-a">Request a free audit using the form on this page. We'll review your listings and follow up within 24 hours.</div></div>
+      <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><span>What makes you different?</span><span class="faq-toggle">+</span></div><div class="faq-a">Unlike traditional management companies, we don't take over your listings. We build scalable systems that improve performance while keeping you in control. We're operators first — we run our own portfolio at 90–95% occupancy and use the same models with clients.</div></div>
+      <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><span>What's your pricing model?</span><span class="faq-toggle">+</span></div><div class="faq-a">Pricing is tailored to each client based on the number of listings and the level of optimisation required. After the initial consultation we provide a clear, transparent quote based on project scope — with no hidden costs or long-term obligations.</div></div>
+      <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><span>What's it like to work with you?</span><span class="faq-toggle">+</span></div><div class="faq-a">Structured, transparent, and results-focused. We handle the setup, guide you through each step, and use the same models we've built for our own Airbnb portfolio — scaled to six figures in revenue before offering them to clients.</div></div>
+      <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><span>Do you take over my listing?</span><span class="faq-toggle">+</span></div><div class="faq-a">No. Your accounts, listings, and guest relationships stay yours. We run the systems on top of them — you stay the owner, we do the work.</div></div>
+      <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><span>How can I contact you?</span><span class="faq-toggle">+</span></div><div class="faq-a">Request a free audit through the form on this page or email us directly at <strong>siam@eternalpropertyco.com</strong>.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>Ready to transform how your Airbnb runs?</h2>
+    <p>Join hosts who have already increased occupancy, boosted revenue, and eliminated day-to-day stress by implementing proven Airbnb automation systems with Eternal Property Co.</p>
+    <div class="cta-row" style="justify-content:center">
+      <a href="https://tally.so/r/rjox22" target="_blank" rel="noopener" class="btn-primary">Request a free audit</a>
+      <a href="#calc" class="btn-secondary">Try the leak calculator</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>
+      <img src="/assets/images/logo-black.png" alt="Eternal Property Co" style="height:38px;width:auto;margin-bottom:10px;display:block" />
+      <div>© 2026 · STR systems &amp; revenue optimisation</div>
+    </div>
+    <div class="foot-links">
+      <a href="mailto:siam@eternalpropertyco.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        siam@eternalpropertyco.com
+      </a>
+      <a href="https://www.instagram.com/eternalproperty_co" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        @eternalproperty_co
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function fmt(n){return '£' + Math.round(n).toLocaleString()}
+  function calc(){
+    const listings = +document.getElementById('listings').value || 0;
+    const rate = +document.getElementById('rate').value || 0;
+    const occ = (+document.getElementById('occ').value || 0) / 100;
+    const dyn = document.getElementById('dyn').value;
+    const dynMult = dyn === 'no' ? 0.18 : dyn === 'basic' ? 0.10 : 0.04;
+    const opsMult = 0.04;
+    const annualRev = listings * rate * 365 * occ;
+    const leak = annualRev * (dynMult + opsMult);
+    document.getElementById('leak').textContent = fmt(leak);
+    document.getElementById('lc').textContent = listings;
+    return {leak, listings, rate, occ: occ*100, dyn, annualRev};
+  }
+  ['listings','rate','occ','dyn'].forEach(id=>{
+    document.getElementById(id).addEventListener('input', calc);
+  });
+  calc();
+
+  // Email-gated reveal
+  const revealBtn = document.getElementById('calc-reveal');
+  const emailInput = document.getElementById('calc-email');
+  const errEl = document.getElementById('calc-error');
+
+  function showError(msg){
+    errEl.textContent = msg;
+    errEl.style.display = 'block';
+  }
+  function clearError(){
+    errEl.style.display = 'none';
+  }
+
+  revealBtn.addEventListener('click', async function(){
+    clearError();
+    const email = emailInput.value.trim();
+    const listings = +document.getElementById('listings').value || 0;
+    const rate = +document.getElementById('rate').value || 0;
+    const occ = +document.getElementById('occ').value || 0;
+
+    // Basic validation
+    if(!listings || !rate || !occ){
+      showError('Please fill in all three numbers above first.');
+      return;
+    }
+    if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      showError('Please enter a valid email address.');
+      return;
+    }
+
+    revealBtn.disabled = true;
+    revealBtn.textContent = 'Revealing…';
+
+    // Submit to Formspree (replace YOUR_FORM_ID with your real Formspree endpoint)
+    // Sign up free at formspree.io, create a form, paste the endpoint URL below
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xpqbbzbk';
+    const data = calc();
+
+    try {
+      await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify({
+          email: email,
+          listings: data.listings,
+          nightly_rate: data.rate,
+          occupancy_pct: data.occ,
+          dynamic_pricing: data.dyn,
+          annual_revenue: data.annualRev,
+          estimated_leak: data.leak,
+          source: 'Revenue Leak Calculator'
+        })
+      });
+    } catch(e){
+      // Even if submission fails, still reveal the result — don't lose the user
+      console.warn('Submission error:', e);
+    }
+
+    // Reveal result
+    document.getElementById('calc-gate').style.display = 'none';
+    document.getElementById('calc-output').style.display = 'block';
+    document.getElementById('calc-email-confirm').textContent = email;
+
+    // Scroll result into view
+    document.getElementById('calc-output').scrollIntoView({behavior:'smooth', block:'center'});
+  });
+</script>
+
+</body>
+</html>

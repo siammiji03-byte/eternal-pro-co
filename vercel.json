@@ -1,0 +1,23 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/audit",
+      "destination": "https://tally.so/r/rjox22",
+      "permanent": false
+    },
+    {
+      "source": "/instagram",
+      "destination": "https://www.instagram.com/eternalproperty_co",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ]
+}
