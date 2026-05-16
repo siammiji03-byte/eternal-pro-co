@@ -788,28 +788,33 @@
     revealBtn.disabled = true;
     revealBtn.textContent = 'Revealing…';
 
-    // Submit to Formspree (replace YOUR_FORM_ID with your real Formspree endpoint)
-    // Sign up free at formspree.io, create a form, paste the endpoint URL below
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xpqbbzbk';
+    // Submit to Web3Forms — paste your access key below
+    // Get yours free at https://web3forms.com (sent to you by email)
+    const WEB3FORMS_ACCESS_KEY = '77a9052c-8655-439d-8472-99364174c96a';
     const data = calc();
 
     try {
-      await fetch(FORMSPREE_ENDPOINT, {
+      await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {'Content-Type':'application/json','Accept':'application/json'},
         body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: 'New revenue leak submission · £' + Math.round(data.leak).toLocaleString(),
+          from_name: 'Eternal Property Co — Leak Calculator',
           email: email,
           listings: data.listings,
           nightly_rate: data.rate,
           occupancy_pct: data.occ,
           dynamic_pricing: data.dyn,
-          annual_revenue: data.annualRev,
-          estimated_leak: data.leak,
-          source: 'Revenue Leak Calculator'
+          annual_revenue: Math.round(data.annualRev),
+          estimated_leak: Math.round(data.leak),
+          source: 'Revenue Leak Calculator',
+          // Web3Forms-specific options
+          replyto: email,
+          botcheck: ''
         })
       });
     } catch(e){
-      // Even if submission fails, still reveal the result — don't lose the user
       console.warn('Submission error:', e);
     }
 
