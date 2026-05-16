@@ -1,0 +1,51 @@
+Subject: Your revenue leak breakdown — Eternal Property Co
+
+---
+
+Hi there,
+
+Thanks for using the revenue leak calculator. Here's your breakdown — what you submitted, what it means, and what to do about it.
+
+YOUR NUMBERS
+Listings: {{ listings }}
+Avg nightly rate: £{{ nightly_rate }}
+Occupancy: {{ occupancy_pct }}%
+Dynamic pricing: {{ dynamic_pricing }}
+
+ESTIMATED ANNUAL REVENUE LEAK: £{{ estimated_leak }}
+Across your {{ listings }} listings, every year.
+
+---
+
+WHERE THE LEAK COMES FROM
+
+Based on what you submitted, that figure breaks down across the four common revenue loss areas in multi-listing portfolios:
+
+01 — Pricing not adapting to demand
+Static or seasonally-set rates miss daily demand shifts, weekends, and local events. This is usually 50-70% of the leak.
+
+02 — Manual guest messaging
+Slow replies push response score down and conversion with it. Lost direct bookings + lower visibility = ~10% of the leak.
+
+03 — Cleaning runs on follow-ups
+One missed turnover is one bad review that costs you a month of bookings. Hard to quantify but very real.
+
+04 — Inconsistent post-booking flow
+Without a structured review request system, you average 4.7 instead of 4.9 — and lose Superhost lift on every listing.
+
+---
+
+WANT ME TO FIX IT?
+
+The 30-minute audit shows you exactly which leak is biggest in your portfolio, what to install to plug it, and what it would cost. Free, no pitch unless you ask.
+
+Book my free audit: https://tally.so/r/rjox22
+
+If you have a quick question first, just hit reply or message me on WhatsApp — fastest way to reach me.
+
+Siam
+Eternal Property Co
+
+---
+eternalpropertyco.com  ·  WhatsApp: https://wa.me/393209113237  ·  Instagram: @eternalproperty_co
+You received this because you used the revenue leak calculator on eternalpropertyco.com

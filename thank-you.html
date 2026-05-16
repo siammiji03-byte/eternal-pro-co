@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thank you — Eternal Property Co</title>
+<meta name="description" content="Your revenue leak breakdown is on its way. Book a free audit to fix it." />
+<meta name="robots" content="noindex,nofollow" />
+
+<link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --bg-2:#111111;
+    --bg-3:#181818;
+    --line:#2a2a2a;
+    --line-2:#333333;
+    --text:#f5f5f5;
+    --muted:#b8b8b8;
+    --gold:#e8c98a;
+    --gold-2:#f3dba5;
+    --gold-dim:#a88945;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  .ty-page{min-height:100vh;display:flex;flex-direction:column}
+
+  /* Minimal nav — just logo + back to home */
+  .ty-nav{padding:18px 24px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.85);backdrop-filter:blur(12px)}
+  .ty-nav-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:center}
+  .ty-logo{height:44px;display:flex;align-items:center}
+  .ty-logo img{height:100%;width:auto;display:block}
+  .ty-back{font-size:12px;letter-spacing:0.08em;color:var(--muted);text-transform:uppercase;font-weight:600;display:flex;align-items:center;gap:6px;transition:color 0.2s}
+  .ty-back:hover{color:var(--gold)}
+  .ty-back svg{width:14px;height:14px}
+
+  /* Main content */
+  .ty-main{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 24px;position:relative;overflow:hidden}
+  .ty-main::before{content:"";position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(232,201,138,0.08),transparent 70%);pointer-events:none}
+  .ty-content{max-width:680px;width:100%;text-align:center;position:relative;z-index:1}
+
+  /* Checkmark */
+  .ty-check{width:80px;height:80px;border-radius:50%;background:transparent;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 32px;animation:scaleIn 0.5s ease-out}
+  .ty-check svg{width:36px;height:36px;color:var(--gold);stroke-width:3}
+  @keyframes scaleIn{
+    0%{transform:scale(0);opacity:0}
+    100%{transform:scale(1);opacity:1}
+  }
+
+  .ty-eyebrow{display:inline-block;font-size:11px;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;padding:6px 12px;border:1px solid var(--gold-dim);border-radius:2px;font-weight:700}
+  h1{font-family:'Playfair Display',serif;font-size:clamp(32px,4.5vw,52px);line-height:1.1;font-weight:600;letter-spacing:-0.02em;margin-bottom:20px}
+  h1 em{color:var(--gold);font-style:normal;font-weight:700}
+  .ty-sub{font-size:17px;color:var(--muted);max-width:520px;margin:0 auto 40px;line-height:1.6}
+  .ty-sub strong{color:var(--text);font-weight:500}
+
+  /* Leak result card */
+  .ty-leak-card{background:var(--bg-2);border:1px solid var(--gold-dim);border-radius:6px;padding:32px 24px;margin:0 auto 32px;max-width:480px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,0.3)}
+  .ty-leak-label{font-size:11px;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  .ty-leak-num{font-family:'Playfair Display',serif;font-size:clamp(48px,7vw,72px);color:var(--gold);font-weight:700;line-height:1;letter-spacing:-0.02em}
+  .ty-leak-period{font-size:14px;color:var(--muted);margin-top:12px}
+
+  /* Email confirmation box */
+  .ty-email-box{background:var(--bg-2);border:1px solid var(--line-2);border-radius:6px;padding:24px;margin:0 auto 48px;max-width:480px;text-align:left;display:flex;align-items:center;gap:16px}
+  .ty-email-icon{width:44px;height:44px;border-radius:50%;background:rgba(232,201,138,0.1);display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0}
+  .ty-email-icon svg{width:20px;height:20px}
+  .ty-email-text{flex:1;min-width:0}
+  .ty-email-label{font-size:11px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;font-weight:600;margin-bottom:4px}
+  .ty-email-value{font-size:14px;color:var(--text);font-weight:500;word-break:break-all}
+
+  /* Next steps section */
+  .ty-next{background:linear-gradient(135deg,#1a1308 0%,#0a0a0a 100%);border:1px solid var(--gold-dim);padding:40px 32px;border-radius:6px;margin:0 auto;max-width:560px;text-align:left}
+  @media(max-width:600px){.ty-next{padding:32px 24px}}
+  .ty-next-label{font-size:11px;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  .ty-next h2{font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,28px);line-height:1.2;font-weight:600;margin-bottom:14px;letter-spacing:-0.01em}
+  .ty-next p{color:var(--muted);font-size:15px;line-height:1.65;margin-bottom:28px}
+  .btn-primary{padding:15px 28px;background:var(--gold);color:var(--bg);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s;border:none;cursor:pointer;text-decoration:none;display:inline-block;border-radius:2px}
+  .btn-primary:hover{background:var(--gold-2);transform:translateY(-1px)}
+  .ty-secondary-row{display:flex;gap:14px;justify-content:center;margin-top:36px;flex-wrap:wrap}
+  .ty-secondary-link{font-size:13px;color:var(--muted);letter-spacing:0.05em;display:flex;align-items:center;gap:6px;transition:color 0.2s}
+  .ty-secondary-link:hover{color:var(--gold)}
+  .ty-secondary-link svg{width:14px;height:14px}
+
+  /* Footer */
+  footer{padding:24px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center}
+</style>
+</head>
+<body>
+
+<div class="ty-page">
+
+  <nav class="ty-nav">
+    <div class="ty-nav-inner">
+      <a href="/" class="ty-logo">
+        <img src="/assets/images/logo-black.png" alt="Eternal Property Co" />
+      </a>
+      <a href="/" class="ty-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to site
+      </a>
+    </div>
+  </nav>
+
+  <main class="ty-main">
+    <div class="ty-content">
+
+      <div class="ty-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+
+      <div class="ty-eyebrow">Audit results sent</div>
+      <h1>Your <em>full breakdown</em> is on its way.</h1>
+      <p class="ty-sub">We've sent your revenue leak analysis to your inbox. It usually arrives within a minute — check spam if you don't see it.</p>
+
+      <!-- Leak result summary -->
+      <div class="ty-leak-card" id="ty-leak-card" style="display:none">
+        <div class="ty-leak-label">Your estimated annual revenue leak</div>
+        <div class="ty-leak-num" id="ty-leak">£0</div>
+        <div class="ty-leak-period">Across your <span id="ty-listings">0</span> listings, every year</div>
+      </div>
+
+      <div class="ty-email-box">
+        <div class="ty-email-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="ty-email-text">
+          <div class="ty-email-label">Sent to</div>
+          <div class="ty-email-value" id="ty-email">your email address</div>
+        </div>
+      </div>
+
+      <div class="ty-next">
+        <div class="ty-next-label">Next step</div>
+        <h2>Want us to fix the leak for you?</h2>
+        <p>The breakdown shows where you're losing revenue. The 30-minute audit shows exactly how to plug it — pricing, messaging, ops. Free, no pitch unless you ask.</p>
+        <a href="https://tally.so/r/rjox22" target="_blank" rel="noopener" class="btn-primary">Book my free audit</a>
+      </div>
+
+      <div class="ty-secondary-row">
+        <a href="https://wa.me/393209113237?text=Hi%20Siam%2C%20I%20just%20used%20the%20revenue%20leak%20calculator." target="_blank" rel="noopener" class="ty-secondary-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Message on WhatsApp
+        </a>
+        <a href="mailto:siam@eternalpropertyco.com" class="ty-secondary-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email Siam directly
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    © 2026 Eternal Property Co · STR systems &amp; revenue optimisation
+  </footer>
+
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+
+  // Email
+  const email = params.get('email');
+  if(email){
+    document.getElementById('ty-email').textContent = decodeURIComponent(email);
+  } else {
+    const box = document.querySelector('.ty-email-box');
+    if(box) box.style.display = 'none';
+  }
+
+  // Leak figure
+  const leak = params.get('leak');
+  const listings = params.get('listings');
+  if(leak && Number(leak) > 0){
+    const card = document.getElementById('ty-leak-card');
+    document.getElementById('ty-leak').textContent = '£' + Number(leak).toLocaleString();
+    document.getElementById('ty-listings').textContent = listings || '—';
+    card.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

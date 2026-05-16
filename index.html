@@ -813,13 +813,23 @@
       console.warn('Submission error:', e);
     }
 
-    // Reveal result
+    // Reveal result on the calculator page
     document.getElementById('calc-gate').style.display = 'none';
     document.getElementById('calc-output').style.display = 'block';
     document.getElementById('calc-email-confirm').textContent = email;
 
     // Scroll result into view
     document.getElementById('calc-output').scrollIntoView({behavior:'smooth', block:'center'});
+
+    // After a brief pause (so user sees their leak), redirect to thank-you page
+    setTimeout(() => {
+      const params = new URLSearchParams({
+        email: email,
+        leak: Math.round(data.leak),
+        listings: data.listings
+      });
+      window.location.href = '/thank-you.html?' + params.toString();
+    }, 1800);
   });
   // Mobile menu toggle
   const burger = document.getElementById('navBurger');

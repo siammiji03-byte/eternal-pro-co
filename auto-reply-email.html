@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your revenue leak breakdown</title>
+</head>
+<body style="margin:0;padding:0;background:#f5f3ef;font-family:'Helvetica Neue',Arial,sans-serif;color:#222;line-height:1.55;">
+
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#f5f3ef;padding:32px 16px;">
+  <tr>
+    <td align="center">
+
+      <table role="presentation" width="560" cellspacing="0" cellpadding="0" border="0" style="max-width:560px;width:100%;background:#ffffff;border:1px solid #e6e2da;">
+
+        <!-- Header band -->
+        <tr>
+          <td style="background:#0a0a0a;padding:28px 32px;text-align:left;">
+            <div style="font-family:'Georgia',serif;font-weight:700;color:#e8c98a;font-size:18px;letter-spacing:0.04em;">ETERNAL PROPERTY CO</div>
+            <div style="color:#9a9a9a;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;margin-top:4px;">Revenue leak breakdown</div>
+          </td>
+        </tr>
+
+        <!-- Greeting -->
+        <tr>
+          <td style="padding:36px 32px 8px;">
+            <p style="margin:0 0 16px;font-size:16px;color:#222;">Hi there,</p>
+            <p style="margin:0 0 16px;font-size:15px;color:#444;line-height:1.65;">
+              Thanks for using the revenue leak calculator. Here's your breakdown — what you submitted, what it means, and what to do about it.
+            </p>
+          </td>
+        </tr>
+
+        <!-- Inputs summary -->
+        <tr>
+          <td style="padding:8px 32px;">
+            <div style="background:#f8f6f1;border-left:3px solid #c9a45c;padding:18px 22px;margin:16px 0;">
+              <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#8a7340;font-weight:700;margin-bottom:10px;">Your numbers</div>
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td style="padding:4px 0;font-size:14px;color:#555;width:50%;">Listings</td>
+                  <td style="padding:4px 0;font-size:14px;color:#222;font-weight:600;text-align:right;">{{ listings }}</td>
+                </tr>
+                <tr>
+                  <td style="padding:4px 0;font-size:14px;color:#555;">Avg nightly rate</td>
+                  <td style="padding:4px 0;font-size:14px;color:#222;font-weight:600;text-align:right;">£{{ nightly_rate }}</td>
+                </tr>
+                <tr>
+                  <td style="padding:4px 0;font-size:14px;color:#555;">Occupancy</td>
+                  <td style="padding:4px 0;font-size:14px;color:#222;font-weight:600;text-align:right;">{{ occupancy_pct }}%</td>
+                </tr>
+                <tr>
+                  <td style="padding:4px 0;font-size:14px;color:#555;">Dynamic pricing</td>
+                  <td style="padding:4px 0;font-size:14px;color:#222;font-weight:600;text-align:right;">{{ dynamic_pricing }}</td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Leak number -->
+        <tr>
+          <td style="padding:16px 32px;">
+            <div style="background:#0a0a0a;color:#fff;padding:32px 24px;text-align:center;">
+              <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#e8c98a;font-weight:700;margin-bottom:14px;">Estimated annual revenue leak</div>
+              <div style="font-family:'Georgia',serif;font-size:48px;color:#e8c98a;font-weight:700;line-height:1;">£{{ estimated_leak }}</div>
+              <div style="font-size:13px;color:#9a9a9a;margin-top:12px;">Across your {{ listings }} listings, every year</div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Breakdown -->
+        <tr>
+          <td style="padding:28px 32px 8px;">
+            <h2 style="font-family:'Georgia',serif;font-size:22px;color:#0a0a0a;margin:0 0 16px;font-weight:700;letter-spacing:-0.01em;">Where the leak comes from</h2>
+            <p style="margin:0 0 20px;font-size:14px;color:#555;line-height:1.65;">
+              Based on what you submitted, here's how that figure breaks down across the four common revenue loss areas in multi-listing portfolios:
+            </p>
+
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-bottom:12px;">
+              <tr>
+                <td style="padding:14px 0;border-bottom:1px solid #e6e2da;vertical-align:top;">
+                  <div style="font-weight:600;color:#0a0a0a;font-size:14px;margin-bottom:4px;">01 — Pricing not adapting to demand</div>
+                  <div style="font-size:13px;color:#666;line-height:1.55;">Static or seasonally-set rates miss daily demand shifts, weekends, and local events. This is usually 50-70% of the leak.</div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:14px 0;border-bottom:1px solid #e6e2da;vertical-align:top;">
+                  <div style="font-weight:600;color:#0a0a0a;font-size:14px;margin-bottom:4px;">02 — Manual guest messaging</div>
+                  <div style="font-size:13px;color:#666;line-height:1.55;">Slow replies push response score down and conversion with it. Lost direct bookings + lower visibility = ~10% of the leak.</div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:14px 0;border-bottom:1px solid #e6e2da;vertical-align:top;">
+                  <div style="font-weight:600;color:#0a0a0a;font-size:14px;margin-bottom:4px;">03 — Cleaning runs on follow-ups</div>
+                  <div style="font-size:13px;color:#666;line-height:1.55;">One missed turnover is one bad review that costs you a month of bookings. Hard to quantify but very real.</div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:14px 0;vertical-align:top;">
+                  <div style="font-weight:600;color:#0a0a0a;font-size:14px;margin-bottom:4px;">04 — Inconsistent post-booking flow</div>
+                  <div style="font-size:13px;color:#666;line-height:1.55;">Without a structured review request system, you average 4.7 instead of 4.9 — and lose Superhost lift on every listing.</div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- CTA -->
+        <tr>
+          <td style="padding:24px 32px 32px;">
+            <h3 style="font-family:'Georgia',serif;font-size:18px;color:#0a0a0a;margin:0 0 12px;font-weight:700;">Want me to fix it?</h3>
+            <p style="margin:0 0 24px;font-size:14px;color:#555;line-height:1.65;">
+              The 30-minute audit shows you exactly which leak is biggest in your portfolio, what to install to plug it, and what it would cost. Free, no pitch unless you ask.
+            </p>
+            <table role="presentation" cellspacing="0" cellpadding="0">
+              <tr>
+                <td>
+                  <a href="https://tally.so/r/rjox22" style="display:inline-block;background:#c9a45c;color:#0a0a0a;padding:14px 28px;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:2px;">Book my free audit</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Sign-off -->
+        <tr>
+          <td style="padding:0 32px 32px;">
+            <p style="margin:0 0 8px;font-size:14px;color:#555;line-height:1.65;">
+              If you have a quick question first, just hit reply or message me on WhatsApp — fastest way to reach me.
+            </p>
+            <p style="margin:16px 0 0;font-size:14px;color:#222;">
+              Siam<br>
+              <span style="color:#666;">Eternal Property Co</span>
+            </p>
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="background:#0a0a0a;padding:20px 32px;color:#9a9a9a;font-size:11px;letter-spacing:0.05em;line-height:1.55;">
+            <a href="https://eternalpropertyco.com" style="color:#e8c98a;text-decoration:none;">eternalpropertyco.com</a> &nbsp;·&nbsp;
+            <a href="https://wa.me/393209113237" style="color:#e8c98a;text-decoration:none;">WhatsApp</a> &nbsp;·&nbsp;
+            <a href="https://www.instagram.com/eternalproperty_co" style="color:#e8c98a;text-decoration:none;">Instagram</a>
+            <div style="margin-top:8px;color:#555;">You received this because you used the revenue leak calculator on eternalpropertyco.com</div>
+          </td>
+        </tr>
+
+      </table>
+
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
