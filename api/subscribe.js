@@ -1,10 +1,9 @@
 export default async function handler(req, res) {
-  // Only allow POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { email, listings, nightly_rate, occupancy_pct, annual_revenue, estimated_leak } = req.body;
+  const { email } = req.body;
 
   if (!email) {
     return res.status(400).json({ error: 'Email is required' });
@@ -18,14 +17,7 @@ export default async function handler(req, res) {
         'X-API-Key': '5ka1a58mw8vldwf587i8lb1pt2avqgzbjmeidvsp8gsme7i32lbdazbu2erygc0y'
       },
       body: JSON.stringify({
-        email,
-        fields: [
-          { slug: 'listings',       value: String(listings || '') },
-          { slug: 'nightly_rate',   value: String(nightly_rate || '') },
-          { slug: 'occupancy_pct',  value: String(occupancy_pct || '') },
-          { slug: 'annual_revenue', value: String(annual_revenue || '') },
-          { slug: 'estimated_leak', value: String(estimated_leak || '') }
-        ],
+        email: email,
         tags: [{ name: 'revenue-leak-lead' }]
       })
     });
