@@ -13,37 +13,26 @@ export default async function handler(req, res) {
   if (!email) return res.status(400).json({ error: 'Email is required' });
 
   try {
-    // Step 1: Create or update the contact
+    // Create contact with tag inline — single API call
     const contactRes = await fetch('https://api.systeme.io/api/contacts', {
       method: 'POST',
       headers: HEADERS,
-      body: JSON.stringify({ email })
+      body: JSON.stringify({
+        email,
+        tags: [{ name: 'revenue-leak-lead' }]
+      })
     });
 
     const contact = await contactRes.json();
+
+    console.log('Systeme.io response:', contactRes.status, JSON.stringify(contact));
 
     if (!contactRes.ok) {
       console.error('Contact creation error:', contact);
       return res.status(contactRes.status).json({ error: 'Failed to create contact', details: contact });
     }
 
-    const contactId = contact.id;
-
-    // Step 2: Add the revenue-leak-lead tag via separate call
-    const tagRes = await fetch(`https://api.systeme.io/api/contacts/${contactId}/tags`, {
-      method: 'POST',
-      headers: HEADERS,
-      body: JSON.stringify({ name: 'revenue-leak-lead' })
-    });
-
-    const tagData = await tagRes.json();
-
-    if (!tagRes.ok) {
-      console.error('Tag error:', tagData);
-      // Contact was created — don't fail the whole request, just log
-    }
-
-    return res.status(200).json({ success: true, contactId });
+    return res.status(200).json({ success: true, contactId: contact.id, tags: contact.tags });
 
   } catch (err) {
     console.error('Server error:', err);
