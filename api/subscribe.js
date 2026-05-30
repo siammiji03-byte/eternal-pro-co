@@ -56,8 +56,8 @@ export default async function handler(req, res) {
         headers: HEADERS,
         body: JSON.stringify({ tagId })
       });
-      const tagData = await tagRes.json();
-      console.log('Tag response:', tagRes.status, JSON.stringify(tagData));
+      const tagText = await tagRes.text();
+      console.log('Tag response:', tagRes.status, tagText);
     }
 
     // Step 4: Save calculator field data to the contact
