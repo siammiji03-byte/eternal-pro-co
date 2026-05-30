@@ -74,7 +74,9 @@ export default async function handler(req, res) {
         headers: HEADERS,
         body: JSON.stringify({ fields })
       });
-      fieldsResult = { status: patchRes.status, data: await patchRes.json() };
+      const patchText = await patchRes.text();
+      const patchData = patchText ? JSON.parse(patchText) : {};
+      fieldsResult = { status: patchRes.status, data: patchData };
       console.log('Fields PATCH:', JSON.stringify(fieldsResult));
     }
 
