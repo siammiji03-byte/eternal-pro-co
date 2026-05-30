@@ -788,27 +788,20 @@
     revealBtn.disabled = true;
     revealBtn.textContent = 'Revealing…';
 
-    // Submit to systeme.io via API
-    const SYSTEME_API_KEY = '5ka1a58mw8vldwf587i8lb1pt2avqgzbjmeidvsp8gsme7i32lbdazbu2erygc0y';
+    // Submit via serverless proxy to systeme.io
     const data = calc();
 
     try {
-      await fetch('https://api.systeme.io/api/contacts', {
+      await fetch('/api/subscribe', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-API-Key': SYSTEME_API_KEY
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: email,
-          fields: [
-            { slug: 'listings',       value: String(data.listings) },
-            { slug: 'nightly_rate',   value: String(data.rate) },
-            { slug: 'occupancy_pct',  value: String(data.occ) },
-            { slug: 'annual_revenue', value: String(Math.round(data.annualRev)) },
-            { slug: 'estimated_leak', value: String(Math.round(data.leak)) }
-          ],
-          tags: [{ name: 'revenue-leak-lead' }]
+          listings: data.listings,
+          nightly_rate: data.rate,
+          occupancy_pct: data.occ,
+          annual_revenue: Math.round(data.annualRev),
+          estimated_leak: Math.round(data.leak)
         })
       });
     } catch(e){
