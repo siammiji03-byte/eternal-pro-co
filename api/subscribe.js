@@ -71,7 +71,7 @@ export default async function handler(req, res) {
     if (fields.length > 0) {
       const patchRes = await fetch(`https://api.systeme.io/api/contacts/${contactId}`, {
         method: 'PATCH',
-        headers: HEADERS,
+        headers: { ...HEADERS, 'Content-Type': 'application/merge-patch+json' },
         body: JSON.stringify({ fields })
       });
       const patchText = await patchRes.text();
