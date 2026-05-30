@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { email } = req.body;
+  const { email, listings, nightly_rate, occupancy_pct, estimated_leak } = req.body;
   if (!email) return res.status(400).json({ error: 'Email is required' });
 
   try {
@@ -58,13 +58,30 @@ export default async function handler(req, res) {
       });
       const tagData = await tagRes.json();
       console.log('Tag response:', tagRes.status, JSON.stringify(tagData));
-      return res.status(200).json({ success: true, contactId, tagStatus: tagRes.status, tagData });
     }
 
-    return res.status(200).json({ success: true, contactId, warning: 'Tag not found' });
+    // Step 4: Save calculator field data to the contact
+    const fields = [];
+    if (nightly_rate)  fields.push({ slug: 'nightly_rate',   value: String(nightly_rate) });
+    if (estimated_leak) fields.push({ slug: 'estimated_leak', value: String(estimated_leak) });
+    if (occupancy_pct) fields.push({ slug: 'occupancy',       value: String(occupancy_pct) });
+    if (listings)      fields.push({ slug: 'listings',        value: String(listings) });
+
+    let fieldsResult = null;
+    if (fields.length > 0) {
+      const patchRes = await fetch(`https://api.systeme.io/api/contacts/${contactId}`, {
+        method: 'PATCH',
+        headers: HEADERS,
+        body: JSON.stringify({ fields })
+      });
+      fieldsResult = { status: patchRes.status, data: await patchRes.json() };
+      console.log('Fields PATCH:', JSON.stringify(fieldsResult));
+    }
+
+    return res.status(200).json({ success: true, contactId, fieldsResult });
 
   } catch (err) {
     console.error('Server error:', err);
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ error: 'Internal server error', detail: err.message, stack: err.stack });
   }
 }
